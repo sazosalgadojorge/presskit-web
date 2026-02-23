@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 161.31 187.73">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #00cfff;
+      }
+
+      .cls-2 {
+        fill: url(#Degradado_sin_nombre_76);
+      }
+
+      .cls-3 {
+        fill: url(#Degradado_sin_nombre_59);
+      }
+    </style>
+    <linearGradient id="Degradado_sin_nombre_59" data-name="Degradado sin nombre 59" x1="-3623.16" y1="2954.98" x2="-3653" y2="2925.14" gradientTransform="translate(-3534.72 2989.69) rotate(-179.58)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00cfff"/>
+      <stop offset=".09" stop-color="#00cfff" stop-opacity=".97"/>
+      <stop offset=".22" stop-color="#00cfff" stop-opacity=".9"/>
+      <stop offset=".37" stop-color="#00cfff" stop-opacity=".77"/>
+      <stop offset=".54" stop-color="#00cfff" stop-opacity=".6"/>
+      <stop offset=".72" stop-color="#00cfff" stop-opacity=".38"/>
+      <stop offset=".92" stop-color="#00cfff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#00cfff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_76" data-name="Degradado sin nombre 76" x1="165.57" y1="171.26" x2="137.34" y2="143.03" gradientTransform="translate(-113.17 -46.19) rotate(.42)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00cfff"/>
+      <stop offset=".16" stop-color="#00cfff" stop-opacity=".86"/>
+      <stop offset=".52" stop-color="#00cfff" stop-opacity=".51"/>
+      <stop offset="1" stop-color="#00cfff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Capa_1" data-name="Capa 1">
+    <g>
+      <polygon class="cls-3" points="84.13 78.46 152.17 78.96 161.31 69.95 96.71 69.48 90.12 72.54 84.13 78.46"/>
+      <polygon class="cls-2" points="77.19 109.27 9.14 108.78 0 117.79 64.61 118.26 71.2 115.19 77.19 109.27"/>
+      <polygon class="cls-1" points="64.61 118.26 41.36 187.73 140.77 89.77 42.09 89.05 98.88 33.09 83.7 78.46 96.27 69.47 119.52 0 20.12 97.96 118.79 98.68 62 154.64 77.19 109.27 64.61 118.26"/>
+    </g>
+  </g>
+</svg>

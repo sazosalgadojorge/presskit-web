@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  /*
+  ╔══════════════════════════════════════════════════════════╗
+  ║              VARIABLES DE DISEÑO — PRESSKIT              ║
+  ║  Modifica estos valores para cambiar todo el tema.       ║
+  ║  Tailwind genera clases automáticamente: bg-primary,     ║
+  ║  text-primary, border-primary, etc.                      ║
+  ╚══════════════════════════════════════════════════════════╝
+  */
+
+  /* ── Color principal ─────────────────────────────────────
+     Cambiar --color-primary actualiza botones, hovers,
+     iconos y acentos en todo el sitio.                    */
+  --color-primary:       #00cfff;   /* violet-600  — color base */
+  --color-primary-light: #00cfff;   /* violet-500  — hovers, bordes */
+  --color-primary-dark:  #00cfff;   /* violet-700  — variante oscura */
+  --color-primary-glow:  #112530;   /* tinte oscuro para fondos con glow */
+
+  /* ── Color secundario / acento ───────────────────────────
+     Usado para highlights, badges o llamadas alternativas. */
+  --color-secondary:       #ec4899; /* pink-500 */
+  --color-secondary-light: #f472b6; /* pink-400 */
+
+  /* ── Fondos (escala de oscuro a claro) ───────────────────
+     background → surface → surface-2 → surface-3          */
+  --color-background: #000000;      /* fondo raíz */
+  --color-surface:    #09090b;      /* secciones alternas */
+  --color-surface-2:  #18181b;      /* cards y paneles */
+  --color-surface-3:  #27272a;      /* headers de cards, inputs */
+
+  /* ── Bordes ──────────────────────────────────────────────*/
+  --color-border:        #27272a;   /* borde estándar */
+  --color-border-subtle: #3f3f46;   /* borde sutil / separadores */
+
+  /* ── Texto (escala de prominente a casi invisible) ───────
+     foreground → muted → muted-2 → muted-3 → muted-4     */
+  --color-foreground: #ffffff;      /* títulos principales */
+  --color-muted:      #d4d4d8;      /* párrafos */
+  --color-muted-2:    #a1a1aa;      /* labels, texto secundario */
+  --color-muted-3:    #71717a;      /* texto muy secundario */
+  --color-muted-4:    #52525b;      /* decorativo, casi invisible */
+}
