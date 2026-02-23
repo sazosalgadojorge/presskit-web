@@ -19,7 +19,7 @@ export default function Bio() {
         {/* Photo */}
         <div className="order-2 md:order-1">
           <div className="aspect-square rounded-2xl bg-surface-3 flex items-center justify-center border border-border-subtle overflow-hidden">
-            <img src="./public/press/DSC00598.jpg" alt="Doble S" className="w-full translate-y-25" />
+            <img src="public/press/DSC00598.jpg" alt="Doble S" className="w-full translate-y-25" />
           </div>
         </div>
 
