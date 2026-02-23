@@ -7,7 +7,7 @@ export default function Hero() {
       {/* Background — YouTube iframe cubriendo todo el hero (oculto en móviles) */}
       <div className="absolute inset-0 pointer-events-none hidden md:block">
 
-      <iframe
+      {/* <iframe
         width="100%"
         height="100%"
         src="https://www.youtube.com/embed/Yhzx_0Zb2LU?si=BG81HOq7NVImnwih&autoplay=1&mute=1&loop=1&playlist=Yhzx_0Zb2LU&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1&playsinline=1"
@@ -16,7 +16,7 @@ export default function Hero() {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
-      ></iframe>
+      ></iframe> */}
       </div>
 
       {/* Capa 1 — oscurecimiento base suave */}
