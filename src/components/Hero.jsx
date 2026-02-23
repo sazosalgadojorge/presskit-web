@@ -4,8 +4,8 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden"
     >
-      {/* Background — YouTube iframe cubriendo todo el hero */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Background — YouTube iframe cubriendo todo el hero (oculto en móviles) */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
 
       <iframe
         width="100%"
