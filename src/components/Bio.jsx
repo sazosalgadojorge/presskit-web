@@ -57,7 +57,7 @@ export default function Bio() {
             {[
               { value: '10+', label: 'Años activo' },
               { value: '200+', label: 'Actuaciones' },
-              { value: '30+', label: 'Países' },
+              { value: '20+', label: 'Ciudades' },
             ].map(({ value, label }) => (
               <div key={label} className="text-center">
                 <p className="text-2xl font-black text-primary-light">{value}</p>
