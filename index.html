@@ -1,10 +1,108 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DOBLE S | Official Website</title>
+
+    <!-- Primary Meta Tags -->
+
+    <title>Doble S | Sitio Oficial</title>
+    <meta name="title" content="Doble S | DJ · Productor · Artista — Sitio Oficial" />
+    <meta name="description" content="Sitio oficial de Doble S, DJ, productor y artista de música electrónica. Agenda fechas, descarga el press kit y conoce más sobre su música." />
+    <meta name="keywords" content="Doble S, DJ, productor, música electrónica, techno, industrial, EBM, artista, booking, press kit, doblesmusic" />
+    <meta name="author" content="Doble S" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://doblesmusic.com" />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://doblesmusic.com" />
+    <meta property="og:title" content="Doble S | DJ · Productor · Artista — Sitio Oficial" />
+    <meta property="og:description" content="Sitio oficial de Doble S, DJ, productor y artista de música electrónica. Agenda fechas, descarga el press kit y conoce más sobre su música." />
+    <meta property="og:image" content="https://doblesmusic.com/hero.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Doble S — DJ y Productor" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content="Doble S" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://doblesmusic.com" />
+    <meta name="twitter:title" content="Doble S | DJ · Productor · Artista — Sitio Oficial" />
+    <meta name="twitter:description" content="Sitio oficial de Doble S, DJ, productor y artista de música electrónica. Agenda fechas, descarga el press kit y conoce más sobre su música." />
+    <meta name="twitter:image" content="https://doblesmusic.com/hero.jpg" />
+    <meta name="twitter:image:alt" content="Doble S — DJ y Productor" />
+    <meta name="twitter:creator" content="@doblesmusic" />
+
+    <!-- Theme color (barra de navegador móvil) -->
+    <meta name="theme-color" content="#000000" />
+
+    <!-- JSON-LD: Datos estructurados para Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://doblesmusic.com/#person",
+          "name": "Doble S",
+          "url": "https://doblesmusic.com",
+          "image": "https://doblesmusic.com/hero.jpg",
+          "description": "Doble S es un DJ, productor y artista de música electrónica con más de 10 años de experiencia en la escena underground. Techno, industrial y EBM.",
+          "jobTitle": "DJ, Productor, Artista",
+          "sameAs": [
+            "https://www.instagram.com/doblesmusic/",
+            "https://www.tiktok.com/@doblesmusic",
+            "https://www.youtube.com/@doblesmusic"
+          ],
+          "knowsAbout": ["Electronic music", "Techno", "Industrial", "EBM", "DJ", "Music production"]
+        },
+        {
+          "@type": "MusicGroup",
+          "@id": "https://doblesmusic.com/#artist",
+          "name": "Doble S",
+          "url": "https://doblesmusic.com",
+          "image": "https://doblesmusic.com/hero.jpg",
+          "description": "Doble S es un DJ, productor y artista de música electrónica con más de 10 años de experiencia en la escena underground.",
+          "genre": ["Electronic", "Techno", "Industrial", "EBM"],
+          "email": "booking@doblesmusic.com",
+          "numberOfMembers": 1,
+          "member": { "@id": "https://doblesmusic.com/#person" },
+          "sameAs": [
+            "https://www.instagram.com/doblesmusic/",
+            "https://www.tiktok.com/@doblesmusic",
+            "https://www.youtube.com/@doblesmusic"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://doblesmusic.com/#website",
+          "url": "https://doblesmusic.com",
+          "name": "Doble S — Sitio Oficial",
+          "description": "Sitio oficial de Doble S, DJ, productor y artista de música electrónica. Agenda fechas, descarga el press kit y conoce su música.",
+          "publisher": { "@id": "https://doblesmusic.com/#artist" },
+          "inLanguage": "es",
+          "potentialAction": {
+            "@type": "ReadAction",
+            "target": "https://doblesmusic.com/#bio"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://doblesmusic.com/#hero" },
+            { "@type": "ListItem", "position": 2, "name": "Bio", "item": "https://doblesmusic.com/#bio" },
+            { "@type": "ListItem", "position": 3, "name": "Música", "item": "https://doblesmusic.com/#music" },
+            { "@type": "ListItem", "position": 4, "name": "Videos", "item": "https://doblesmusic.com/#videos" },
+            { "@type": "ListItem", "position": 5, "name": "Galería", "item": "https://doblesmusic.com/#gallery" },
+            { "@type": "ListItem", "position": 6, "name": "Rider técnico", "item": "https://doblesmusic.com/#rider" }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
