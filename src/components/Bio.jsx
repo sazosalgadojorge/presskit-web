@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
-const SHORT_BIO = `DJ NAME es un artista de música electrónica con más de 10 años de experiencia en la escena underground. Con residencias en los principales clubes de la ciudad y actuaciones en festivales internacionales, su sonido fusiona techno oscuro con elementos de industrial y EBM.`
+const SHORT_BIO = `Doble S, DJ y productor chileno, comenzó su carrera en 2012 y rápidamente se ha consolidado como uno de los artistas más prometedores de la escena musical chilena.`
 
 const LONG_BIO = `${SHORT_BIO}
 
-Doble S, DJ y productor chileno, comenzó su carrera en 2012 y rápidamente se ha consolidado como uno de los artistas más prometedores de la escena musical chilena. Reconocido por la energía de sus sets y por una constante innovación en el escenario, su trabajo va más allá del DJing convencional, posicionándolo además como un productor creativo capaz de conectar profundamente con las emociones del público a través de su música. Este enfoque artístico le ha permitido desarrollar pistas originales que enriquecen y reflejan la diversidad de la música chilena, demostrando su versatilidad como creador.
+Reconocido por la energía de sus sets y por una constante innovación en el escenario, su trabajo va más allá del DJing convencional, posicionándolo además como un productor creativo capaz de conectar profundamente con las emociones del público a través de su música. Este enfoque artístico le ha permitido desarrollar pistas originales que enriquecen y reflejan la diversidad de la música chilena, demostrando su versatilidad como creador.
 
 Gracias a su capacidad para combinar hits y propuestas innovadoras, ha destacado tanto en la región del Maule como a nivel nacional. Con más de una década de trayectoria y un compromiso permanente con la evolución de su arte, Doble S sigue marcando diferencia en la música actual, consolidándose como referente para nuevas generaciones de artistas y como un imperdible de la escena musical chilena.`
 export default function Bio() {
