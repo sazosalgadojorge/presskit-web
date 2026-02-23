@@ -1,25 +1,32 @@
 const videos = [
   {
-    title: 'Doble S — Video 1',
-    venue: 'doblesmusic',
-    src: 'https://www.youtube-nocookie.com/embed/0zcxFImIM7U?rel=0&modestbranding=1',
+    title: 'REGAETON OLD SCHOOL MIX FT. NACH',
+    venue: 'Studio Sessions',
+    // Embed bloqueado por derechos; enlace directo a YouTube
+    watchUrl: 'https://youtu.be/4-fmTbZVESQ',
+    videoId: '4-fmTbZVESQ',
   },
   {
-    title: 'Doble S — Video 2',
-    venue: 'doblesmusic',
-    src: 'https://www.youtube-nocookie.com/embed/DJlse23_iGg?rel=0&modestbranding=1',
+    title: 'MIX REGGAETON PARTY',
+    venue: 'Studio Sessions',
+    watchUrl: 'https://youtu.be/DJlse23_iGg',
+    videoId: 'DJlse23_iGg',
   },
   {
-    title: 'Doble S — Video 3',
-    venue: 'doblesmusic',
-    src: 'https://www.youtube-nocookie.com/embed/voBcSFLvZJw?rel=0&modestbranding=1',
+    title: 'REGGAETON OLD SCHOOL',
+    venue: 'Studio Sessions',
+    watchUrl: 'https://youtu.be/voBcSFLvZJw',
+    videoId: 'voBcSFLvZJw',
   },
   {
-    title: 'Doble S — Video 4',
-    venue: 'doblesmusic',
+    title: 'RECAP 2024',
+    venue: 'Linares, Chile',
     src: 'https://www.youtube-nocookie.com/embed/IYomUJz_9Fc?rel=0&modestbranding=1',
   },
 ]
+
+// Miniatura de YouTube (cuando el embed está bloqueado)
+const ytThumb = (id) => `https://img.youtube.com/vi/${id}/mqdefault.jpg`
 
 export default function Videos() {
   return (
@@ -33,18 +40,40 @@ export default function Videos() {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {videos.map(({ title, venue, src }) => (
+          {videos.map(({ title, venue, src, watchUrl, videoId }) => (
             <div key={title} className="bg-surface-2 rounded-xl overflow-hidden border border-border">
-              {/* YouTube iframe — replace src with real embed URL */}
               <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  title={title}
-                  src={src}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                  style={{ border: 'none' }}
-                />
+                {watchUrl ? (
+                  <a
+                    href={watchUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-surface-3 group"
+                  >
+                    <img
+                      src={ytThumb(videoId)}
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity"
+                    />
+                    <span className="relative z-10 flex items-center gap-2.5 px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-full text-sm border border-white/20 transition-colors">
+                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/20">
+                        <svg className="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="0.5">
+                          <path d="M8 5v14l11-7L8 5z" />
+                        </svg>
+                      </span>
+                      Ver en YouTube
+                    </span>
+                  </a>
+                ) : (
+                  <iframe
+                    title={title}
+                    src={src}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                    style={{ border: 'none' }}
+                  />
+                )}
               </div>
               <div className="p-4">
                 <h3 className="text-foreground font-bold">{title}</h3>

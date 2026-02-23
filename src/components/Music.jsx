@@ -1,19 +1,24 @@
+// SoundCloud embed: usar URL del player (w.soundcloud.com/player/?url=...) no la URL de la página
+const TRACK_URL = 'https://soundcloud.com/doblesmusic/doblesplace'
+const embedParams = 'auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false'
+const soundcloudEmbed = (path) =>
+  `https://w.soundcloud.com/player/?url=${encodeURIComponent(path)}&${embedParams}`
+
 const tracks = [
   {
-    title: 'Dark Frequencies EP',
-    label: 'Berlin Underground, 2023',
-    // SoundCloud embed — replace the src URL with your actual track
-    src: 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djname/dark-frequencies&color=%237c3aed&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false',
+    title: 'Doble S - Place (Original Mix)',
+    label: 'EP Underground',
+    src: soundcloudEmbed(TRACK_URL),
   },
   {
-    title: 'Industrial Mind Mix',
-    label: 'Podcast Series #12, 2023',
-    src: 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djname/industrial-mind-mix&color=%237c3aed&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false',
+    title: 'Trueno - Real Gangsta Love (Dobles Remix)',
+    label: 'Remix',
+    src: soundcloudEmbed('https://soundcloud.com/doblesmusic/trueno-real-gangsta-love-dobles-remix'),
   },
   {
-    title: 'Resident Mix — Club XYZ',
-    label: 'Live recording, 2022',
-    src: 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djname/resident-mix&color=%237c3aed&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false',
+    title: 'J Balvin, Tokischa - Perra (Doble-S Remix)',
+    label: 'Remix · Free Download',
+    src: soundcloudEmbed('https://soundcloud.com/doblesmusic/j-balvin-tokischa-perra-doble-s-remix-free-download'),
   },
 ]
 
@@ -35,7 +40,7 @@ export default function Music() {
                 <h3 className="text-foreground font-bold text-lg">{title}</h3>
                 <p className="text-muted-3 text-sm">{label}</p>
               </div>
-              {/* SoundCloud iframe — replace src with real embed URL */}
+              {/* SoundCloud embed */}
               <iframe
                 title={title}
                 width="100%"
@@ -49,9 +54,6 @@ export default function Music() {
           ))}
         </div>
 
-        <p className="mt-8 text-center text-muted-4 text-sm">
-          * Reemplaza las URLs de los iframes con tus tracks reales de SoundCloud o Spotify
-        </p>
       </div>
     </section>
   )

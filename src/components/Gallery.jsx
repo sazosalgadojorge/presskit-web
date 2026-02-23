@@ -1,11 +1,11 @@
 // Archivos en public/press/ (DSC00526, DSC00550, DSC00598, DSC00600, DSC00614)
 const photos = [
-  { id: 6, alt: 'DOBLE S — Foto prensa 6', file: 'IMG_8989.png' },
-  { id: 2, alt: 'DOBLE S — Foto prensa 3', file: 'DSC00598.jpg' },
-  { id: 1, alt: 'DOBLE S — Foto prensa 2', file: 'DSC00526.jpg' },
-  { id: 3, alt: 'DOBLE S — Foto prensa 4', file: 'DSC00600.jpg' },
-  { id: 4, alt: 'DOBLE S — Foto prensa 5', file: 'DSC00614.jpg' },
-  { id: 5, alt: 'DOBLE S — Foto prensa 1', file: 'DSC5456.jpg' },
+  { id: 6, alt: 'DOBLE S — PRESS 1', file: 'IMG_8989.png' },
+  { id: 2, alt: 'DOBLE S — PRESS 2', file: 'DSC00598.jpg' },
+  { id: 1, alt: 'DOBLE S — PRESS 3', file: 'DSC00526.jpg' },
+  { id: 3, alt: 'DOBLE S — PRESS 4', file: 'DSC00600.jpg' },
+  { id: 4, alt: 'DOBLE S — PRESS 5', file: 'DSC00614.jpg' },
+  { id: 5, alt: 'DOBLE S — PRESS 6', file: 'DSC5456.jpg' },
 ]
 
 function DownloadIcon() {

@@ -96,11 +96,13 @@ export default function Hero() {
           Agenda por WhatsApp
 </a>
         <a
-          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://drive.google.com/file/d/11IqvxP1vvYuGmfoAYSzhoa424HomJiIK/view?usp=sharing"
           download
           className="px-8 py-3 border border-primary-light hover:bg-primary-light/20 text-primary-light hover:text-foreground font-bold rounded-full transition-colors tracking-wide uppercase text-sm"
         >
-          Download EPK
+          Descargar EPK
         </a>
       </div>
 
