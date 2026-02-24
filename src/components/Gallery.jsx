@@ -39,6 +39,8 @@ export default function Gallery() {
               <img
                 src={`${import.meta.env.BASE_URL || ''}press/${file}`}
                 alt={alt}
+                width="400"
+                height="400"
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"

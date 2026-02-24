@@ -51,7 +51,7 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center mt-20">
 
       {/* Logo */}
-      <img src="/negative.svg" alt="Doble S" className="w-72 md:w-96 mb-3 -translate-x-6" />
+      <img src="/negative.svg" alt="Doble S" width="288" height="96" className="w-72 md:w-96 mb-3 -translate-x-6" />
 
       {/* Tagline */}
       <p className="text-primary-light text-lg md:text-xl font-light tracking-widest uppercase mb-8">
@@ -87,6 +87,7 @@ export default function Hero() {
           href="https://wa.me/56986145761"
           target="_blank"
           rel="noopener noreferrer"
+          data-cta="whatsapp-hero"
           className="px-8 py-3 bg-primary hover:bg-primary-light text-foreground font-bold rounded-full transition-colors tracking-wide uppercase text-sm"
         >
           <svg className="w-5 h-5 inline-block mr-2 -mt-0.5" fill="currentColor" viewBox="0 0 24 24">
@@ -100,6 +101,7 @@ export default function Hero() {
           rel="noopener noreferrer"
           href="https://drive.google.com/file/d/11IqvxP1vvYuGmfoAYSzhoa424HomJiIK/view?usp=sharing"
           download
+          data-cta="download-epk"
           className="px-8 py-3 border border-primary-light hover:bg-primary-light/20 text-primary-light hover:text-foreground font-bold rounded-full transition-colors tracking-wide uppercase text-sm"
         >
           Descargar EPK

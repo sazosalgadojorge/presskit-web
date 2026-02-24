@@ -19,7 +19,7 @@ function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
         <a href="#hero">
-          <img src="/negative.svg" alt="Doble S" className="h-9 w-auto" />
+          <img src="/negative.svg" alt="Doble S" width="120" height="36" className="h-9 w-auto" />
         </a>
         <ul className="hidden md:flex items-center gap-10">
           {navLinks.map(({ href, label }) => (
@@ -37,6 +37,7 @@ function Navbar() {
           href="https://wa.me/56986145761"
           target="_blank"
           rel="noopener noreferrer"
+          data-cta="whatsapp-booking"
           className="text-xs font-light capitalize tracking-wide px-5 py-2 rounded-sm border border-primary bg-primary hover:bg-primary-light hover:border-primary-light text-foreground transition-colors"
         >
           <svg className="w-4 h-4 inline-block mr-1.5 -mt-0.5" fill="currentColor" viewBox="0 0 24 24">
@@ -54,7 +55,7 @@ function Footer() {
   return (
     <footer className="bg-background border-t border-surface-2 py-10 px-6 text-center">
       <div className="flex flex-col items-center gap-3 mb-2">
-        <img src="/blanco.svg" alt="Doble S" className="h-5 w-auto opacity-40" />
+        <img src="/blanco.svg" alt="Doble S" width="80" height="20" className="h-5 w-auto opacity-40" />
         <p className="text-muted-4 text-xs tracking-widest">
           © {new Date().getFullYear()} · All rights reserved
         </p>

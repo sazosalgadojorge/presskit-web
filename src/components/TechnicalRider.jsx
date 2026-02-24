@@ -131,6 +131,7 @@ export default function TechnicalRider() {
           <button
             type="button"
             onClick={buildRiderPdf}
+            data-cta="download-rider-pdf"
             className="inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary-light text-foreground font-bold rounded-full transition-colors tracking-wide uppercase text-sm"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

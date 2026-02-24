@@ -53,6 +53,10 @@ export default function Videos() {
                     <img
                       src={ytThumb(videoId)}
                       alt=""
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity"
                     />
                     <span className="relative z-10 flex items-center gap-2.5 px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-full text-sm border border-white/20 transition-colors">

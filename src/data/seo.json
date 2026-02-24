@@ -1,0 +1,8 @@
+{
+  "siteUrl": "https://doblesmusic.com",
+  "defaultTitle": "DOBLE S | Sitio Oficial",
+  "defaultDescription": "Sitio oficial de DOBLE S, DJ y productor chileno. Agenda fechas, descarga el press kit y conoce más sobre su música.",
+  "areaServed": { "@type": "Country", "name": "Chile" },
+  "genre": ["Electronic", "Techno", "Industrial", "EBM"],
+  "jobTitle": "DJ, Productor"
+}
