@@ -4,12 +4,14 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import { LanguageProvider } from './context/LanguageContext.jsx'
 import App from './App.jsx'
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <LanguageProvider>
         <App />
+        <SpeedInsights />
       </LanguageProvider>
     </BrowserRouter>
   </StrictMode>,
