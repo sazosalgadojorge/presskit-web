@@ -1,10 +1,13 @@
+import { Routes, Route } from 'react-router-dom'
 import Hero from './components/Hero'
 import Bio from './components/Bio'
 import Music from './components/Music'
 import Videos from './components/Videos'
 import Gallery from './components/Gallery'
 import TechnicalRider from './components/TechnicalRider'
+import Press from './pages/Press.jsx'
 import { useLanguage } from './context/LanguageContext.jsx'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
   const { locale, setLocale, t } = useLanguage()
@@ -19,9 +22,9 @@ function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="w-full max-w-6xl mx-auto px-4 md:px-6 h-16 sm:h-20 flex items-center justify-between gap-2 min-w-0">
-        <a href="#hero" className="shrink-0">
+        <Link to="/" className="shrink-0">
           <img src="/negative.svg" alt="Doble S" width="120" height="36" className="h-8 sm:h-9 w-auto" />
-        </a>
+        </Link>
         <ul className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-10 min-w-0 flex-1 justify-center pl-10">
           {navLinks.map(({ href, label }) => (
             <li key={href} className="shrink-0">
@@ -82,9 +85,9 @@ function Footer() {
   )
 }
 
-export default function App() {
+function HomePage() {
   return (
-    <div className="bg-background min-h-screen text-foreground">
+    <>
       <Navbar />
       <main className="pt-16 sm:pt-20">
         <Hero />
@@ -95,6 +98,17 @@ export default function App() {
         <TechnicalRider />
       </main>
       <Footer />
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <div className="bg-background min-h-screen text-foreground">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/press" element={<Press />} />
+      </Routes>
     </div>
   )
 }

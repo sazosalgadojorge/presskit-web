@@ -10,6 +10,7 @@ export const translations = {
       videos: 'Videos',
       gallery: 'Galería',
       rider: 'Rider',
+      press: 'Press',
       booking: 'Booking',
     },
     hero: {
@@ -71,6 +72,18 @@ export const translations = {
       allRightsReserved: 'All rights reserved',
       booking: 'Booking',
     },
+    pressPage: {
+      title: 'Material de prensa',
+      subtitle: 'Descarga logos, visuales y fotografías en alta resolución para flyers, cartelería y redes.',
+      logos: 'Logotipos',
+      logosDesc: 'Versiones del logo en distintos fondos. Uso libre para promoción de eventos.',
+      visuals: 'Visuales',
+      visualsDesc: 'Imágenes y artes para redes y cartelería.',
+      photos: 'Fotografías',
+      photosDesc: 'Fotos en alta resolución para prensa y producción.',
+      download: 'Descargar',
+      backToHome: 'Volver al inicio',
+    },
   },
   en: {
     nav: {
@@ -80,6 +93,7 @@ export const translations = {
       videos: 'Videos',
       gallery: 'Gallery',
       rider: 'Rider',
+      press: 'Press',
       booking: 'Booking',
     },
     hero: {
@@ -140,6 +154,18 @@ export const translations = {
     footer: {
       allRightsReserved: 'All rights reserved',
       booking: 'Booking',
+    },
+    pressPage: {
+      title: 'Press kit',
+      subtitle: 'Download logos, visuals and high-resolution photos for flyers, posters and socials.',
+      logos: 'Logos',
+      logosDesc: 'Logo versions on different backgrounds. Free to use for event promotion.',
+      visuals: 'Visuals',
+      visualsDesc: 'Artwork for socials and posters.',
+      photos: 'Photography',
+      photosDesc: 'High-resolution photos for press and production.',
+      download: 'Download',
+      backToHome: 'Back to home',
     },
   },
 }
