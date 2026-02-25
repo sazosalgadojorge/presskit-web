@@ -1,3 +1,5 @@
+import { useLanguage } from '../context/LanguageContext.jsx'
+
 const videos = [
   {
     title: 'REGAETON OLD SCHOOL MIX FT. NACH',
@@ -29,14 +31,15 @@ const videos = [
 const ytThumb = (id) => `https://img.youtube.com/vi/${id}/mqdefault.jpg`
 
 export default function Videos() {
+  const { t } = useLanguage()
   return (
     <section id="videos" className="py-24 px-6 bg-surface">
       <div className="max-w-6xl mx-auto">
         <p className="text-primary-light text-sm font-semibold tracking-widest uppercase mb-3">
-          Sets & Visuals
+          {t('videos.setsVisuals')}
         </p>
         <h2 className="text-4xl md:text-5xl font-black text-foreground mb-12 uppercase tracking-tight">
-          Videos
+          {t('videos.title')}
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -65,7 +68,7 @@ export default function Videos() {
                           <path d="M8 5v14l11-7L8 5z" />
                         </svg>
                       </span>
-                      Ver en YouTube
+                      {t('videos.watchOnYoutube')}
                     </span>
                   </a>
                 ) : (

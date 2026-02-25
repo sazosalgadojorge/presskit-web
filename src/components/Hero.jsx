@@ -1,8 +1,11 @@
+import { useLanguage } from '../context/LanguageContext.jsx'
+
 export default function Hero() {
+  const { t } = useLanguage()
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden"
+      className="relative min-h-screen h-dvh flex flex-col items-center text-center px-6 overflow-hidden -mt-16 sm:-mt-20 pt-16 sm:pt-20"
     >
       {/* Background — YouTube iframe cubriendo todo el hero (oculto en móviles) */}
       <div className="absolute inset-0 pointer-events-none hidden md:block">
@@ -47,19 +50,45 @@ export default function Hero() {
         }}
       />
 
-      {/* Contenido sobre las capas */}
-      <div className="relative z-10 flex flex-col items-center mt-20">
-
-      {/* Logo */}
-      <img src="/negative.svg" alt="Doble S" width="288" height="96" className="w-72 md:w-96 mb-3 -translate-x-6" />
+      {/* Móvil: --hero-logo/x tagline/x social/x — Desktop (md+): --hero-logo/x-desktop, etc. */}
+      <div className="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center w-full max-w-full">
+        {/* Logo */}
+        <img
+          src="/negative.svg"
+          alt="Doble S"
+          width="300"
+          className="w-72 md:w-96 mb-3 max-w-[85vw] mx-auto max-md:[transform:translate(var(--hero-logo-x),var(--hero-logo-y))] md:[transform:translate(var(--hero-logo-x-desktop),var(--hero-logo-y-desktop))]"
+          style={{
+            '--hero-logo-x': '-5px',
+            '--hero-logo-y': '0px',
+            '--hero-logo-x-desktop': '-2rem',
+            '--hero-logo-y-desktop': '+30px',
+          }}
+        />
 
       {/* Tagline */}
-      <p className="text-primary-light text-lg md:text-xl font-light tracking-widest uppercase mb-8">
-        DJ · Productor · Artista
+      <p
+        className="text-primary-light text-lg md:text-xl font-light tracking-widest uppercase mb-8 text-center w-full max-md:[transform:translate(var(--hero-tagline-x),var(--hero-tagline-y))] md:[transform:translate(var(--hero-tagline-x-desktop),var(--hero-tagline-y-desktop))]"
+        style={{
+          '--hero-tagline-x': '5px',
+          '--hero-tagline-y': '0px',
+          '--hero-tagline-x-desktop': '0rem',
+          '--hero-tagline-y-desktop': '+30px',
+        }}
+      >
+        {t('hero.tagline')}
       </p>
 
       {/* Social icons */}
-      <div className="flex gap-6 mb-10 text-muted-2">
+      <div
+        className="flex flex-wrap justify-center gap-6 mb-10 text-muted-2 max-md:[transform:translate(var(--hero-social-x),var(--hero-social-y))] md:[transform:translate(var(--hero-social-x-desktop),var(--hero-social-y-desktop))]"
+        style={{
+          '--hero-social-x': '0px',
+          '--hero-social-y': '0px',
+          '--hero-social-x-desktop': '0px',
+          '--hero-social-y-desktop': '+30px',
+        }}
+      >
         {/* Instagram */}
         <a href="https://www.instagram.com/doblesmusic/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-primary-light transition-colors">
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -82,7 +111,7 @@ export default function Hero() {
       </div>
 
       {/* CTAs */}
-      <div className="flex flex-col sm:flex-row gap-4">
+      {/* <div className="flex flex-col sm:flex-row gap-4">
         <a
           href="https://wa.me/56986145761"
           target="_blank"
@@ -94,8 +123,8 @@ export default function Hero() {
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
             <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.122 1.524 5.855L0 24l6.335-1.505A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 0 1-5.031-1.374l-.361-.214-3.741.981.999-3.648-.235-.374A9.861 9.861 0 0 1 2.118 12C2.118 6.534 6.534 2.118 12 2.118c5.467 0 9.882 4.416 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z" />
           </svg>
-          Agenda por WhatsApp
-</a>
+          {t('hero.ctaWhatsApp')}
+        </a>
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -104,17 +133,19 @@ export default function Hero() {
           data-cta="download-epk"
           className="px-8 py-3 border border-primary-light hover:bg-primary-light/20 text-primary-light hover:text-foreground font-bold rounded-full transition-colors tracking-wide uppercase text-sm"
         >
-          Descargar EPK
+          {t('hero.ctaEpk')}
         </a>
-      </div>
+      </div> */}
 
       </div>{/* fin contenido */}
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-muted-4 z-10">
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
+      {/* Scroll indicator: espacio fijo abajo para que siempre se vea en cualquier pantalla */}
+      <div className="flex-shrink-0 flex justify-center pb-4 pt-2 text-muted-4 z-10 pointer-events-none">
+        <span className="animate-bounce inline-block" aria-hidden="true">
+          <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
       </div>
     </section>
   )

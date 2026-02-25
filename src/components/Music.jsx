@@ -1,3 +1,5 @@
+import { useLanguage } from '../context/LanguageContext.jsx'
+
 // SoundCloud embed: usar URL del player (w.soundcloud.com/player/?url=...) no la URL de la página
 const TRACK_URL = 'https://soundcloud.com/doblesmusic/doblesplace'
 const embedParams = 'auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false'
@@ -23,14 +25,15 @@ const tracks = [
 ]
 
 export default function Music() {
+  const { t } = useLanguage()
   return (
     <section id="music" className="py-24 px-6 bg-background">
       <div className="max-w-5xl mx-auto">
         <p className="text-primary-light text-sm font-semibold tracking-widest uppercase mb-3">
-          Escucha
+          {t('music.listen')}
         </p>
         <h2 className="text-4xl md:text-5xl font-black text-foreground mb-12 uppercase tracking-tight">
-          Música
+          {t('music.title')}
         </h2>
 
         <div className="space-y-8">
