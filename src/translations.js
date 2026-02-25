@@ -156,7 +156,7 @@ export const translations = {
       booking: 'Booking',
     },
     pressPage: {
-      title: 'Press kit',
+      title: 'Press material',
       subtitle: 'Download logos, visuals and high-resolution photos for flyers, posters and socials.',
       logos: 'Logos',
       logosDesc: 'Logo versions on different backgrounds. Free to use for event promotion.',
