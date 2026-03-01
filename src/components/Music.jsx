@@ -8,9 +8,9 @@ const soundcloudEmbed = (path) =>
 
 const tracks = [
   {
-    title: 'Doble S - Place (Original Mix)',
-    label: 'EP Underground',
-    src: soundcloudEmbed(TRACK_URL),
+    title: 'Polvos Que No Se Olvidan (Remix)',
+    label: 'Remix',
+    src: soundcloudEmbed('https://soundcloud.com/doblesmusic/polvosquenoseolvidanremix'),
   },
   {
     title: 'Trueno - Real Gangsta Love (Dobles Remix)',
@@ -18,9 +18,10 @@ const tracks = [
     src: soundcloudEmbed('https://soundcloud.com/doblesmusic/trueno-real-gangsta-love-dobles-remix'),
   },
   {
-    title: 'J Balvin, Tokischa - Perra (Doble-S Remix)',
-    label: 'Remix · Free Download',
-    src: soundcloudEmbed('https://soundcloud.com/doblesmusic/j-balvin-tokischa-perra-doble-s-remix-free-download'),
+    title: 'Doble-S - Aca Place',
+    label: 'Original',
+    url: 'https://soundcloud.com/doblesmusic/doblesplace',
+    src: soundcloudEmbed('https://soundcloud.com/doblesmusic/doblesplace'),
   },
 ]
 
