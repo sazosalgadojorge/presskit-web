@@ -11,12 +11,14 @@ const logos = [
 ]
 
 const photos = [
-  { id: 1, alt: 'DOBLE S — PRESS 1', file: 'IMG_8989.png' },
+  { id: 1, alt: 'DOBLE S — PRESS 1', file: 'DSC5458.jpg' },
+  { id: 3, alt: 'DOBLE S — PRESS 3', file: 'IMG_8989.png' },
   { id: 2, alt: 'DOBLE S — PRESS 2', file: 'DSC00598.jpg' },
-  { id: 3, alt: 'DOBLE S — PRESS 3', file: 'DSC00526.jpg' },
-  { id: 4, alt: 'DOBLE S — PRESS 4', file: 'DSC00600.jpg' },
-  { id: 5, alt: 'DOBLE S — PRESS 5', file: 'DSC00614.jpg' },
-  { id: 6, alt: 'DOBLE S — PRESS 6', file: 'DSC5456.jpg' },
+  { id: 4, alt: 'DOBLE S — PRESS 4', file: 'DSC00526.jpg' },
+  { id: 5, alt: 'DOBLE S — PRESS 5', file: 'DSC00600.jpg' },
+  { id: 6, alt: 'DOBLE S — PRESS 6', file: 'DSC00614.jpg' },
+  { id: 7, alt: 'DOBLE S — PRESS 7', file: 'DSC5456.jpg' },
+
 ]
 
 function DownloadIcon() {
@@ -131,8 +133,8 @@ export default function Press() {
         </Link>
         <p className="text-muted-4 text-xs">
           © {new Date().getFullYear()} DOBLE S ·{' '}
-          <a href="mailto:booking@doblesmusic.com" className="text-primary hover:text-primary-light transition-colors">
-            booking@doblesmusic.com
+          <a href="mailto:contacto.djdobles@gmail.com" className="text-primary hover:text-primary-light transition-colors">
+            contacto.djdobles@gmail.com
           </a>
         </p>
       </footer>

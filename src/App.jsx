@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import Hero from './components/Hero'
 import Bio from './components/Bio'
 import Music from './components/Music'
@@ -9,8 +10,18 @@ import Press from './pages/Press.jsx'
 import { useLanguage } from './context/LanguageContext.jsx'
 import { Link } from 'react-router-dom'
 
+const WA_ICON = (
+  <svg className="w-4 h-4 inline-block mr-1.5 -mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.122 1.524 5.855L0 24l6.335-1.505A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 0 1-5.031-1.374l-.361-.214-3.741.981.999-3.648-.235-.374A9.861 9.861 0 0 1 2.118 12C2.118 6.534 6.534 2.118 12 2.118c5.467 0 9.882 4.416 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z" />
+  </svg>
+)
+
 function Navbar() {
   const { locale, setLocale, t } = useLanguage()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('#hero')
+
   const navLinks = [
     { href: '#hero', label: t('nav.home') },
     { href: '#bio', label: t('nav.bio') },
@@ -19,49 +30,190 @@ function Navbar() {
     { href: '#gallery', label: t('nav.gallery') },
     { href: '#rider', label: t('nav.rider') },
   ]
+
+  // Detectar sección activa
+  useEffect(() => {
+    const ids = ['hero', 'bio', 'music', 'videos', 'gallery', 'rider']
+    const observers = ids.map((id) => {
+      const el = document.getElementById(id)
+      if (!el) return null
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(`#${id}`) },
+        { rootMargin: '-30% 0px -60% 0px' }
+      )
+      obs.observe(el)
+      return obs
+    })
+    return () => observers.forEach((o) => o?.disconnect())
+  }, [])
+
+  // Bloquear scroll y Escape
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    const onKey = (e) => { if (e.key === 'Escape') setMenuOpen(false) }
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = ''
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [menuOpen])
+
+  const close = () => setMenuOpen(false)
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="w-full max-w-6xl mx-auto px-4 md:px-6 h-16 sm:h-20 flex items-center justify-between gap-2 min-w-0">
-        <Link to="/" className="shrink-0">
-          <img src="/negative.svg" alt="Doble S" width="120" height="36" className="h-8 sm:h-9 w-auto" />
-        </Link>
-        <ul className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-10 min-w-0 flex-1 justify-center pl-10">
-          {navLinks.map(({ href, label }) => (
-            <li key={href} className="shrink-0">
-              <a
-                href={href}
-                className="text-muted-2 hover:text-primary-light text-xs lg:text-sm font-light tracking-wide capitalize transition-colors whitespace-nowrap"
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <div className="hidden md:flex items-center gap-2 lg:gap-4 shrink-0">
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div className="w-full max-w-6xl mx-auto px-4 md:px-6 h-16 sm:h-20 flex items-center justify-between gap-2 min-w-0">
+          <Link to="/" className="shrink-0" onClick={close}>
+            <img src="/icon.svg" alt="Doble S" width="120" height="36" className="h-8 sm:h-9 w-auto" />
+          </Link>
+
+          {/* Desktop links */}
+          <ul className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-10 min-w-0 flex-1 justify-center pl-40">
+            {navLinks.map(({ href, label }) => (
+              <li key={href} className="shrink-0 relative">
+                <a
+                  href={href}
+                  className={`text-xs lg:text-sm font-light tracking-wide capitalize transition-colors whitespace-nowrap ${
+                    activeSection === href ? 'text-primary-light' : 'text-muted-2 hover:text-primary-light'
+                  }`}
+                >
+                  {label}
+                  {activeSection === href && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary-light rounded-full" />
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Desktop controls */}
+          <div className="hidden md:flex items-center gap-2 lg:gap-4 shrink-0">
+            <button
+              type="button"
+              onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
+              className="text-muted-3 hover:text-primary-light text-xs font-light uppercase tracking-wide transition-colors"
+              aria-label={locale === 'es' ? 'Switch to English' : 'Cambiar a español'}
+            >
+              {locale === 'es' ? 'EN' : 'ES'}
+            </button>
+            <a
+              href="https://wa.me/56986145761"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="whatsapp-booking"
+              className="text-xs font-light capitalize tracking-wide px-5 py-2 rounded-sm border border-primary bg-primary hover:bg-primary-light hover:border-primary-light text-foreground transition-colors"
+            >
+              {WA_ICON}
+              {t('nav.booking')}
+            </a>
+          </div>
+
+          {/* Mobile: idioma + hamburger */}
+          <div className="flex md:hidden items-center gap-4 shrink-0">
+            <button
+              type="button"
+              onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
+              className="text-muted-3 hover:text-primary-light text-xs font-light uppercase tracking-wide transition-colors"
+              aria-label={locale === 'es' ? 'Switch to English' : 'Cambiar a español'}
+            >
+              {locale === 'es' ? 'EN' : 'ES'}
+            </button>
+            <button
+              type="button"
+              onClick={() => setMenuOpen((v) => !v)}
+              className="text-foreground p-1 -mr-1"
+              aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={menuOpen}
+            >
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                {/* Barra superior */}
+                <line
+                  x1="3" y1="7" x2="21" y2="7"
+                  className="transition-all duration-300 origin-center"
+                  style={{ transform: menuOpen ? 'translateY(5px) rotate(45deg)' : 'none', transformBox: 'fill-box' }}
+                />
+                {/* Barra central */}
+                <line
+                  x1="3" y1="12" x2="21" y2="12"
+                  className="transition-all duration-300"
+                  style={{ opacity: menuOpen ? 0 : 1 }}
+                />
+                {/* Barra inferior */}
+                <line
+                  x1="3" y1="17" x2="21" y2="17"
+                  className="transition-all duration-300 origin-center"
+                  style={{ transform: menuOpen ? 'translateY(-5px) rotate(-45deg)' : 'none', transformBox: 'fill-box' }}
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile menu overlay */}
+      <div
+        className={`fixed inset-0 z-[60] bg-background flex flex-col md:hidden transition-opacity duration-300 ${
+          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        aria-hidden={!menuOpen}
+      >
+        {/* Header del menú */}
+        <div className="flex items-center justify-between px-4 h-16 sm:h-20 border-b border-border shrink-0">
+          <Link to="/" onClick={close}>
+            <img src="/icon.svg" alt="Doble S" className="h-8 w-auto" />
+          </Link>
           <button
             type="button"
-            onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
-            className="text-muted-3 hover:text-primary-light text-xs font-light uppercase tracking-wide transition-colors"
-            aria-label={locale === 'es' ? 'Switch to English' : 'Cambiar a español'}
+            onClick={close}
+            className="text-muted-2 hover:text-foreground transition-colors p-1"
+            aria-label="Cerrar menú"
           >
-            {locale === 'es' ? 'EN' : 'ES'}
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </button>
+        </div>
+
+        {/* Links */}
+        <nav className="flex-1 flex flex-col items-center justify-center gap-2 px-6">
+          {navLinks.map(({ href, label }, i) => (
+            <a
+              key={href}
+              href={href}
+              onClick={close}
+              className={`text-4xl sm:text-5xl font-black uppercase tracking-tight py-2 transition-all duration-300 ${
+                activeSection === href ? 'text-primary-light' : 'text-foreground/70 hover:text-foreground'
+              } ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              style={{ transitionDelay: menuOpen ? `${80 + i * 60}ms` : '0ms' }}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Footer del menú */}
+        <div
+          className={`shrink-0 px-6 pb-10 flex flex-col items-center gap-4 transition-all duration-300 ${
+            menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+          style={{ transitionDelay: menuOpen ? '460ms' : '0ms' }}
+        >
           <a
             href="https://wa.me/56986145761"
             target="_blank"
             rel="noopener noreferrer"
-            data-cta="whatsapp-booking"
-            className="text-xs font-light capitalize tracking-wide px-5 py-2 rounded-sm border border-primary bg-primary hover:bg-primary-light hover:border-primary-light text-foreground transition-colors"
+            onClick={close}
+            data-cta="whatsapp-booking-mobile"
+            className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary-light text-foreground font-bold rounded-sm transition-colors tracking-wide uppercase text-sm"
           >
-            <svg className="w-4 h-4 inline-block mr-1.5 -mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.122 1.524 5.855L0 24l6.335-1.505A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 0 1-5.031-1.374l-.361-.214-3.741.981.999-3.648-.235-.374A9.861 9.861 0 0 1 2.118 12C2.118 6.534 6.534 2.118 12 2.118c5.467 0 9.882 4.416 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z" />
-            </svg>
+            {WA_ICON}
             {t('nav.booking')}
           </a>
+          <p className="text-muted-4 text-xs tracking-widest">doblesmusic.com</p>
         </div>
       </div>
-    </nav>
+    </>
   )
 }
 
@@ -77,8 +229,8 @@ function Footer() {
       </div>
       <p className="mt-2 text-muted-4 text-xs">
         {t('footer.booking')}:{' '}
-        <a href="mailto:booking@doblesmusic.com" className="text-primary hover:text-primary-light transition-colors">
-          booking@doblesmusic.com
+        <a href="mailto:contacto.djdobles@gmail.com" className="text-primary hover:text-primary-light transition-colors">
+          contacto.djdobles@gmail.com
         </a>
       </p>
     </footer>
