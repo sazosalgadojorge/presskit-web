@@ -2,6 +2,23 @@ import { useState, useEffect, useRef } from 'react'
 import { useLanguage } from '../context/LanguageContext.jsx'
 import { useInView } from '../hooks/useInView.js'
 
+// Renderiza **texto** como span destacado en primary-light
+function RichText({ text }) {
+  return (
+    <div className="space-y-4">
+      {text.split('\n\n').map((para, i) => (
+        <p key={i}>
+          {para.split(/(\*\*[^*]+\*\*)/).map((part, j) =>
+            part.startsWith('**') && part.endsWith('**')
+              ? <strong key={j} className="text-primary-light font-semibold">{part.slice(2, -2)}</strong>
+              : part
+          )}
+        </p>
+      ))}
+    </div>
+  )
+}
+
 function useCounter(target, active, duration = 1400) {
   const [count, setCount] = useState(0)
   useEffect(() => {
@@ -78,9 +95,9 @@ export default function Bio() {
             {t('bio.biography')}
           </h2>
 
-          <div className="text-muted leading-relaxed space-y-4">
+          <div className="text-muted leading-relaxed">
             {expanded ? (
-              <p className="whitespace-pre-line">{longBio}</p>
+              <RichText text={longBio} />
             ) : (
               <p>{shortBio}</p>
             )}

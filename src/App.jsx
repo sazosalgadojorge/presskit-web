@@ -5,6 +5,7 @@ import Bio from './components/Bio'
 import Music from './components/Music'
 import Videos from './components/Videos'
 import Gallery from './components/Gallery'
+import Shows from './components/Shows'
 import TechnicalRider from './components/TechnicalRider'
 import Press from './pages/Press.jsx'
 import { useLanguage } from './context/LanguageContext.jsx'
@@ -27,13 +28,14 @@ function Navbar() {
     { href: '#bio', label: t('nav.bio') },
     { href: '#music', label: t('nav.music') },
     { href: '#videos', label: t('nav.videos') },
+    { href: '#shows', label: t('shows.title') },
     { href: '#gallery', label: t('nav.gallery') },
     { href: '#rider', label: t('nav.rider') },
   ]
 
   // Detectar sección activa
   useEffect(() => {
-    const ids = ['hero', 'bio', 'music', 'videos', 'gallery', 'rider']
+    const ids = ['hero', 'bio', 'music', 'videos', 'shows', 'gallery', 'rider']
     const observers = ids.map((id) => {
       const el = document.getElementById(id)
       if (!el) return null
@@ -246,6 +248,7 @@ function HomePage() {
         <Bio />
         <Music />
         <Videos />
+        <Shows />
         <Gallery />
         <TechnicalRider />
       </main>
