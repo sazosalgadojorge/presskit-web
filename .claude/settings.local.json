@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm install:*)",
       "Bash(npm run:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(find /Users/desarrolloverfrut/_webs/presskit-web -name tailwind.config.* -o -name globals.css)"
     ]
   }
 }

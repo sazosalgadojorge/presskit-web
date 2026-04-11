@@ -4,11 +4,17 @@ import { useInView } from '../hooks/useInView.js'
 
 const videos = [
   {
-    title: 'REGAETON OLD SCHOOL MIX FT. NACH',
+    title: 'REGGAETON VIEJO V/S NUEVO - DOBLE S',
     venue: 'Studio Sessions',
-    watchUrl: 'https://youtu.be/4-fmTbZVESQ',
-    videoId: '4-fmTbZVESQ',
+    watchUrl: 'https://youtu.be/3oBl_7AwzKE?si=6Au23FKZtWne1fDw',
+    videoId: '3oBl_7AwzKE',
   },
+  // {
+  //   title: 'REGAETON OLD SCHOOL MIX FT. NACH',
+  //   venue: 'Studio Sessions',
+  //   watchUrl: 'https://youtu.be/4-fmTbZVESQ',
+  //   videoId: '4-fmTbZVESQ',
+  // },
   {
     title: 'MIX REGGAETON PARTY',
     venue: 'Studio Sessions',
@@ -77,12 +83,16 @@ function VideoModal({ video, onClose }) {
               href={video.watchUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-6 py-3 bg-[#FF0000] hover:bg-[#cc0000] text-white font-bold rounded-full transition-colors text-sm uppercase tracking-wide"
+              className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 transition-all duration-300"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-              </svg>
-              {t('videos.watchOnYoutube')}
+              <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white/20 border border-white/20">
+                <svg className="w-3.5 h-3.5 ml-0.5" viewBox="0 0 24 24" fill="white">
+                  <path d="M8 5v14l11-7L8 5z" />
+                </svg>
+              </span>
+              <span className="text-white/90 text-xs font-semibold uppercase tracking-widest">
+                {t('videos.watchOnYoutube')}
+              </span>
             </a>
           </div>
         </div>
@@ -117,7 +127,7 @@ export default function Videos() {
                 {watchUrl ? (
                   <button
                     onClick={() => setActiveVideo({ title, venue, watchUrl, videoId })}
-                    className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-surface-3 group w-full"
+                    className="absolute inset-0 group w-full overflow-hidden"
                   >
                     <img
                       src={ytThumb(videoId)}
@@ -126,16 +136,23 @@ export default function Videos() {
                       height="360"
                       loading="lazy"
                       decoding="async"
-                      className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <span className="relative z-10 flex items-center gap-2.5 px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-full text-sm border border-white/20 transition-colors">
-                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/20">
-                        <svg className="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M8 5v14l11-7L8 5z" />
-                        </svg>
-                      </span>
-                      {t('videos.watchOnYoutube')}
-                    </span>
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/55 transition-colors duration-300" />
+                    {/* Botón play */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                      <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 group-hover:border-white/40 transition-all duration-300 group-hover:scale-105">
+                        <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white/20 border border-white/20">
+                          <svg className="w-3.5 h-3.5 ml-0.5" viewBox="0 0 24 24" fill="white">
+                            <path d="M8 5v14l11-7L8 5z" />
+                          </svg>
+                        </span>
+                        <span className="text-white/90 text-xs font-semibold uppercase tracking-widest">
+                          {t('videos.watchOnYoutube')}
+                        </span>
+                      </div>
+                    </div>
                   </button>
                 ) : (
                   <iframe

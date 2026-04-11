@@ -26,16 +26,16 @@ function Navbar() {
   const navLinks = [
     { href: '#hero', label: t('nav.home') },
     { href: '#bio', label: t('nav.bio') },
+    { href: '#shows', label: t('shows.title') },
     { href: '#music', label: t('nav.music') },
     { href: '#videos', label: t('nav.videos') },
-    { href: '#shows', label: t('shows.title') },
     { href: '#gallery', label: t('nav.gallery') },
     { href: '#rider', label: t('nav.rider') },
   ]
 
   // Detectar sección activa
   useEffect(() => {
-    const ids = ['hero', 'bio', 'music', 'videos', 'shows', 'gallery', 'rider']
+    const ids = ['hero', 'bio', 'shows', 'music', 'videos', 'gallery', 'rider']
     const observers = ids.map((id) => {
       const el = document.getElementById(id)
       if (!el) return null
@@ -246,9 +246,9 @@ function HomePage() {
       <main className="pt-16 sm:pt-20">
         <Hero />
         <Bio />
+        <Shows />
         <Music />
         <Videos />
-        <Shows />
         <Gallery />
         <TechnicalRider />
       </main>

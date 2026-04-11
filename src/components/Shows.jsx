@@ -34,8 +34,8 @@ const clubs = [
   { name: 'Club X', city: 'Colbún' },
   { name: 'La Loca Club', city: 'Vichuquén' },
   { name: 'Campary Club', city: 'Vila Alegre' },
-  { name: 'Espacio Piedra', city: 'Peluhue' },
-  { name: 'Club Capital', city: 'Santiago' },
+  { name: 'Espacio Piedra', city: 'Pelluhue' },
+  { name: 'Club Capital', city: 'Concepción' },
 ]
 
 const festivals = [
@@ -48,11 +48,12 @@ const festivals = [
   { name: 'Cuecazo', city: 'Linares' },
   { name: 'Purgatorio', city: 'Linares' },
   { name: 'Friends Año Nuevo', city: 'Linares' },
-  { name: 'La Jungla / Los Levantamos', city: 'Linares' },
-  { name: 'Social Room Festival', city: 'Linares' },
+  { name: 'La Jungla', city: 'Curicó' },
+  { name: 'Juntos nos Levantamos', city: 'Linares' },
+  { name: 'Social Room Festivals', city: 'Linares' },
   { name: 'Fiesta Click', city: 'Talca' },
   { name: 'Julieta Festival', city: 'Talca' },
-  { name: 'Elévate', city: 'Parral' },
+  { name: 'Elévate Festival', city: 'Parral' },
   { name: 'Fiesta Moment', city: 'Parral' },
   { name: 'El Nuevo Sol', city: 'Arauco' },
 ]
@@ -98,7 +99,7 @@ function ChileMap() {
       <p className="text-muted-4 text-[10px] uppercase tracking-widest">Chile</p>
       <svg
         viewBox="60 620 200 660"
-        className="w-full max-w-[170px] h-auto"
+        className="w-full max-w-[180px] h-auto"
         aria-hidden="true"
       >
         <defs>
@@ -219,7 +220,7 @@ export default function Shows() {
         </div>
 
         {/* Layout: lista + mapa */}
-        <div ref={contentRef} className={`fade-up ${contentVisible ? 'visible' : ''} lg:grid lg:grid-cols-[1fr_190px] lg:gap-12 lg:items-start`}>
+        <div ref={contentRef} className={`fade-up ${contentVisible ? 'visible' : ''} lg:grid lg:grid-cols-[1fr_200px] lg:gap-12 lg:items-start`}>
 
           {/* Lista */}
           <div>
@@ -256,15 +257,15 @@ export default function Shows() {
               </div>
             )}
 
-            {/* Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5">
+            {/* Lista compacta en 2 columnas */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
               {(tab === 'clubs' ? clubs : rest).map(({ name, city, residency }) => (
                 <div
                   key={name + city}
-                  className="bg-surface-2 border border-border rounded-lg px-3.5 py-3 flex flex-col gap-1 hover:border-border-subtle transition-colors"
+                  className="flex items-center justify-between gap-2 py-2 border-b border-border/50 last:border-0"
                 >
-                  <div className="flex items-start justify-between gap-1.5">
-                    <span className="text-foreground text-sm font-medium leading-snug">{name}</span>
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="text-foreground text-sm font-medium truncate leading-snug">{name}</span>
                     {residency && (
                       <span className="shrink-0 text-[9px] font-bold uppercase tracking-wider text-primary-light/60 border border-primary-light/20 rounded px-1.5 py-0.5">
                         {t('shows.residency')}
@@ -278,17 +279,11 @@ export default function Shows() {
           </div>
 
           {/* Mapa — sticky en desktop */}
-          <div className="hidden lg:block sticky top-28 pt-14">
+          <div className="hidden lg:block -mt-8">
             <ChileMap />
           </div>
         </div>
 
-        {/* Mapa mobile — debajo del listado */}
-        <div className="lg:hidden mt-12 flex justify-center">
-          <div className="w-40">
-            <ChileMap />
-          </div>
-        </div>
 
       </div>
     </section>
