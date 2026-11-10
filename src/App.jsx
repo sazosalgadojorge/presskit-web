@@ -1,6 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Hero from './components/Hero'
+import LatestRelease from './components/LatestRelease'
 import Bio from './components/Bio'
 import Music from './components/Music'
 import Videos from './components/Videos'
@@ -9,7 +10,6 @@ import Shows from './components/Shows'
 import TechnicalRider from './components/TechnicalRider'
 import Press from './pages/Press.jsx'
 import { useLanguage } from './context/LanguageContext.jsx'
-import { Link } from 'react-router-dom'
 
 const WA_ICON = (
   <svg className="w-4 h-4 inline-block mr-1.5 -mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
@@ -21,33 +21,22 @@ const WA_ICON = (
 function Navbar() {
   const { locale, setLocale, t } = useLanguage()
   const [menuOpen, setMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('#hero')
+  const { pathname } = useLocation()
 
   const navLinks = [
-    { href: '#hero', label: t('nav.home') },
-    { href: '#bio', label: t('nav.bio') },
-    { href: '#shows', label: t('shows.title') },
-    { href: '#music', label: t('nav.music') },
-    { href: '#videos', label: t('nav.videos') },
-    { href: '#gallery', label: t('nav.gallery') },
-    { href: '#rider', label: t('nav.rider') },
+    { href: '/', label: t('nav.home') },
+    { href: '/bio', label: t('nav.bio') },
+    { href: '/shows', label: t('shows.title') },
+    { href: '/music', label: t('nav.music') },
+    { href: '/videos', label: t('nav.videos') },
+    { href: '/gallery', label: t('nav.gallery') },
+    { href: '/rider', label: t('nav.rider') },
   ]
 
-  // Detectar sección activa
+  // Scroll al tope al cambiar de página
   useEffect(() => {
-    const ids = ['hero', 'bio', 'shows', 'music', 'videos', 'gallery', 'rider']
-    const observers = ids.map((id) => {
-      const el = document.getElementById(id)
-      if (!el) return null
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(`#${id}`) },
-        { rootMargin: '-30% 0px -60% 0px' }
-      )
-      obs.observe(el)
-      return obs
-    })
-    return () => observers.forEach((o) => o?.disconnect())
-  }, [])
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   // Bloquear scroll y Escape
   useEffect(() => {
@@ -64,51 +53,43 @@ function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/40 backdrop-blur-sm">
         <div className="w-full max-w-6xl mx-auto px-4 md:px-6 h-16 sm:h-20 flex items-center justify-between gap-2 min-w-0">
           <Link to="/" className="shrink-0" onClick={close}>
-            <img src="/icon.svg" alt="Doble S" width="120" height="36" className="h-8 sm:h-9 w-auto" />
+            <img src="/icon.svg" alt="DOBLES" className="h-8 sm:h-9 w-auto" />
           </Link>
 
           {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-10 min-w-0 flex-1 justify-center pl-40">
+          <ul className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-9 min-w-0 flex-1 justify-center pl-40">
             {navLinks.map(({ href, label }) => (
               <li key={href} className="shrink-0 relative">
-                <a
-                  href={href}
-                  className={`text-xs lg:text-sm font-light tracking-wide capitalize transition-colors whitespace-nowrap ${
-                    activeSection === href ? 'text-primary-light' : 'text-muted-2 hover:text-primary-light'
+                <Link
+                  to={href}
+                  className={`text-xs lg:text-sm font-medium tracking-[0.02em] capitalize transition-colors whitespace-nowrap ${
+                    pathname === href ? 'text-primary' : 'text-white/72 hover:text-primary'
                   }`}
                 >
                   {label}
-                  {activeSection === href && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary-light rounded-full" />
+                  {pathname === href && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary rounded-full" />
                   )}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
 
           {/* Desktop controls */}
-          <div className="hidden md:flex items-center gap-2 lg:gap-4 shrink-0">
+          <div className="hidden md:flex items-center gap-4 lg:gap-[18px] shrink-0">
             <button
               type="button"
               onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
-              className="text-muted-3 hover:text-primary-light text-xs font-light uppercase tracking-wide transition-colors"
+              className="font-mono text-xs flex items-center gap-1.5 shrink-0"
               aria-label={locale === 'es' ? 'Switch to English' : 'Cambiar a español'}
             >
-              {locale === 'es' ? 'EN' : 'ES'}
+              <span className={locale === 'es' ? 'text-white' : 'text-white/50 hover:text-white transition-colors'}>ES</span>
+              <span className="text-white/30">/</span>
+              <span className={locale === 'en' ? 'text-white' : 'text-white/50 hover:text-white transition-colors'}>EN</span>
             </button>
-            <a
-              href="https://wa.me/56986145761"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cta="whatsapp-booking"
-              className="text-xs font-light capitalize tracking-wide px-5 py-2 rounded-sm border border-primary bg-primary hover:bg-primary-light hover:border-primary-light text-foreground transition-colors"
-            >
-              {WA_ICON}
-              {t('nav.booking')}
-            </a>
           </div>
 
           {/* Mobile: idioma + hamburger */}
@@ -116,10 +97,12 @@ function Navbar() {
             <button
               type="button"
               onClick={() => setLocale(locale === 'es' ? 'en' : 'es')}
-              className="text-muted-3 hover:text-primary-light text-xs font-light uppercase tracking-wide transition-colors"
+              className="font-mono text-xs flex items-center gap-1.5 shrink-0"
               aria-label={locale === 'es' ? 'Switch to English' : 'Cambiar a español'}
             >
-              {locale === 'es' ? 'EN' : 'ES'}
+              <span className={locale === 'es' ? 'text-white' : 'text-white/50'}>ES</span>
+              <span className="text-white/30">/</span>
+              <span className={locale === 'en' ? 'text-white' : 'text-white/50'}>EN</span>
             </button>
             <button
               type="button"
@@ -163,7 +146,7 @@ function Navbar() {
         {/* Header del menú */}
         <div className="flex items-center justify-between px-4 h-16 sm:h-20 border-b border-border shrink-0">
           <Link to="/" onClick={close}>
-            <img src="/icon.svg" alt="Doble S" className="h-8 w-auto" />
+            <img src="/icon.svg" alt="DOBLES" className="h-8 w-auto" />
           </Link>
           <button
             type="button"
@@ -180,17 +163,17 @@ function Navbar() {
         {/* Links */}
         <nav className="flex-1 flex flex-col items-center justify-center gap-2 px-6">
           {navLinks.map(({ href, label }, i) => (
-            <a
+            <Link
               key={href}
-              href={href}
+              to={href}
               onClick={close}
               className={`text-4xl sm:text-5xl font-black uppercase tracking-tight py-2 transition-all duration-300 ${
-                activeSection === href ? 'text-primary-light' : 'text-foreground/70 hover:text-foreground'
+                pathname === href ? 'text-primary-light' : 'text-foreground/70 hover:text-foreground'
               } ${menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: menuOpen ? `${80 + i * 60}ms` : '0ms' }}
             >
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -222,7 +205,7 @@ function Navbar() {
 function Footer() {
   const { t } = useLanguage()
   return (
-    <footer className="bg-background border-t border-surface-2 py-10 px-6 text-center">
+    <footer id="footer" className="bg-background border-t border-surface-2 py-10 px-6 text-center scroll-mt-16 sm:scroll-mt-20">
       <div className="flex flex-col items-center gap-3 mb-2">
         <img src="/blanco.svg" alt="Doble S" width="80" height="20" className="h-5 w-auto opacity-40" />
         <p className="text-muted-4 text-xs tracking-widest">
@@ -243,15 +226,20 @@ function HomePage() {
   return (
     <>
       <Navbar />
-      <main className="pt-16 sm:pt-20">
+      <main>
         <Hero />
-        <Bio />
-        <Shows />
-        <Music />
-        <Videos />
-        <Gallery />
-        <TechnicalRider />
+        <LatestRelease />
       </main>
+      <Footer />
+    </>
+  )
+}
+
+function SectionPage({ children }) {
+  return (
+    <>
+      <Navbar />
+      <main className="pt-16 sm:pt-20">{children}</main>
       <Footer />
     </>
   )
@@ -262,6 +250,12 @@ export default function App() {
     <div className="bg-background min-h-screen text-foreground">
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/bio" element={<SectionPage><Bio /></SectionPage>} />
+        <Route path="/shows" element={<SectionPage><Shows /></SectionPage>} />
+        <Route path="/music" element={<SectionPage><Music /></SectionPage>} />
+        <Route path="/videos" element={<SectionPage><Videos /></SectionPage>} />
+        <Route path="/gallery" element={<SectionPage><Gallery /></SectionPage>} />
+        <Route path="/rider" element={<SectionPage><TechnicalRider /></SectionPage>} />
         <Route path="/press" element={<Press />} />
       </Routes>
     </div>

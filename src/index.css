@@ -1,6 +1,25 @@
 @import "tailwindcss";
 
+:root {
+  --hero-pad: clamp(20px, 5vw, 72px);
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* ── Scroll suave (anclas dentro de una misma página) ────── */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 @theme {
+  --font-sans: 'Archivo', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
   /*
   ╔══════════════════════════════════════════════════════════╗
   ║              VARIABLES DE DISEÑO — PRESSKIT              ║
@@ -54,53 +73,16 @@
   animation: map-dot-pulse 2.6s ease-in-out infinite;
 }
 
-/* ── Logo SVG animations ─────────────────────────────────── */
-
-/* Símbolo geométrico: dibuja el trazo y luego aparece el fill */
-@keyframes logo-draw-fill {
-  0%   { stroke-dashoffset: 1; fill-opacity: 0; stroke-opacity: 1; }
-  55%  { stroke-dashoffset: 0; fill-opacity: 0; stroke-opacity: 1; }
-  80%  { stroke-dashoffset: 0; fill-opacity: 0.7; stroke-opacity: 0.2; }
-  100% { stroke-dashoffset: 0; fill-opacity: 1; stroke-opacity: 0; }
+/* ── Hero: indicador de scroll (línea que cae) ───────────── */
+@keyframes hero-scroll-drop {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(100%); }
 }
-
-/* Letras: fade + subida suave */
-@keyframes logo-text-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+.hero-scroll-fill {
+  animation: hero-scroll-drop 1.8s linear infinite;
 }
-
-.logo-mark-el {
-  fill-opacity: 0;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  stroke-width: 0.8px;
-  animation: logo-draw-fill 1.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.logo-text-el {
-  opacity: 0;
-  animation: logo-text-in 0.55s ease forwards;
-}
-
-/* Tagline — solo opacity para no interferir con el transform de posicionamiento */
-@keyframes hero-tagline-in {
-  from { opacity: 0; letter-spacing: 0.4em; }
-  to   { opacity: 1; letter-spacing: 0.3em; }
-}
-.hero-tagline {
-  opacity: 0;
-  animation: hero-tagline-in 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Iconos sociales — fade + subida suave */
-@keyframes hero-icon-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.hero-icon {
-  opacity: 0;
-  animation: hero-icon-in 0.45s ease forwards;
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-fill { animation: none; }
 }
 
 /* ── Animaciones de entrada ───────────────────────────────── */

@@ -1,30 +1,6 @@
 import { useLanguage } from '../context/LanguageContext.jsx'
 import { useInView } from '../hooks/useInView.js'
-
-// SoundCloud embed: usar URL del player (w.soundcloud.com/player/?url=...) no la URL de la página
-const TRACK_URL = 'https://soundcloud.com/doblesmusic/doblesplace'
-const embedParams = 'auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false'
-const soundcloudEmbed = (path) =>
-  `https://w.soundcloud.com/player/?url=${encodeURIComponent(path)}&${embedParams}`
-
-const tracks = [
-  {
-    title: 'Polvos Que No Se Olvidan (Remix)',
-    label: 'Remix',
-    src: soundcloudEmbed('https://soundcloud.com/doblesmusic/polvosquenoseolvidanremix'),
-  },
-  {
-    title: 'Trueno - Real Gangsta Love (Dobles Remix)',
-    label: 'Remix',
-    src: soundcloudEmbed('https://soundcloud.com/doblesmusic/trueno-real-gangsta-love-dobles-remix'),
-  },
-  {
-    title: 'Doble-S - Aca Place',
-    label: 'Original',
-    url: 'https://soundcloud.com/doblesmusic/doblesplace',
-    src: soundcloudEmbed('https://soundcloud.com/doblesmusic/doblesplace'),
-  },
-]
+import { tracks } from '../data/tracks.js'
 
 export default function Music() {
   const { t } = useLanguage()

@@ -14,9 +14,15 @@ export const translations = {
       booking: 'Booking',
     },
     hero: {
-      tagline: 'DJ/Productor',
       ctaWhatsApp: 'Agenda por WhatsApp',
       ctaEpk: 'Descargar EPK',
+      lastSet: 'Último set',
+      scroll: 'Scroll',
+    },
+    highlights: {
+      milestone: 'Lollapalooza Chile 2026',
+      latestRelease: 'Nuevo lanzamiento',
+      viewAllMusic: 'Ver toda la música',
     },
     bio: {
       aboutArtist: 'Sobre el artista',
@@ -105,9 +111,15 @@ export const translations = {
       booking: 'Booking',
     },
     hero: {
-      tagline: 'DJ/Producer',
       ctaWhatsApp: 'Book via WhatsApp',
       ctaEpk: 'Download EPK',
+      lastSet: 'Latest set',
+      scroll: 'Scroll',
+    },
+    highlights: {
+      milestone: 'Lollapalooza Chile 2026',
+      latestRelease: 'New release',
+      viewAllMusic: 'View all music',
     },
     bio: {
       aboutArtist: 'About the artist',
