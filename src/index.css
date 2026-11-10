@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-:root {
-  --hero-pad: clamp(20px, 5vw, 72px);
-}
-
 body {
   font-family: var(--font-sans);
 }

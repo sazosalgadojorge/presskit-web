@@ -54,13 +54,13 @@ function Navbar() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/40 backdrop-blur-sm">
-        <div className="w-full max-w-6xl mx-auto px-4 md:px-6 h-16 sm:h-20 flex items-center justify-between gap-2 min-w-0">
+        <div className="w-full px-4 md:px-6 h-16 sm:h-20 flex items-center justify-between gap-2 min-w-0">
           <Link to="/" className="shrink-0" onClick={close}>
             <img src="/icon.svg" alt="DOBLES" className="h-8 sm:h-9 w-auto" />
           </Link>
 
           {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-9 min-w-0 flex-1 justify-center pl-40">
+          <ul className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-9 min-w-0 flex-1 justify-center">
             {navLinks.map(({ href, label }) => (
               <li key={href} className="shrink-0 relative">
                 <Link

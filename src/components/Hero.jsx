@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext.jsx'
 
 export default function Hero() {
@@ -67,21 +66,21 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none md:hidden"
         style={{
           background:
-            'linear-gradient(0deg, #050607 0%, rgba(5,6,7,0) 45%, rgba(5,6,7,.75) 100%)',
+            'linear-gradient(0deg, #050607 0%, rgba(5,6,7,.92) 35%, rgba(5,6,7,0) 65%, rgba(5,6,7,0) 100%)',
         }}
       />
 
       {/* Contenido */}
       <div
-        className="relative z-10 flex-1 flex flex-col justify-end gap-7"
-        style={{ padding: `0 var(--hero-pad) clamp(40px, 7vh, 88px)` }}
+        className="relative z-10 flex-1 flex flex-col justify-end gap-7 px-4 md:px-6"
+        style={{ paddingBottom: `clamp(40px, 7vh, 88px)` }}
       >
-        <h1 className="m-0 leading-none">
+        <h1 className="m-0 leading-none md:absolute md:left-6 md:top-1/2 md:-translate-y-1/2">
           <img
             src="/dobles-logo.svg"
             alt="DOBLES"
             className="h-auto block"
-            style={{ width: 'clamp(260px, 46vw, 680px)' }}
+            style={{ width: 'clamp(260px, 40vw, 600px)' }}
           />
         </h1>
 
@@ -99,15 +98,17 @@ export default function Hero() {
                 <path d="M3 13 13 3M5 3h8v8" stroke="currentColor" strokeWidth="1.6" />
               </svg>
             </a>
-            <Link
-              to="/music"
+            <a
+              href="https://youtu.be/VxhLXayj5Lw"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-3 border-b border-white/35 hover:border-white hover:text-primary transition-colors font-mono text-[13px] tracking-[0.14em] uppercase py-1.5"
             >
               <svg width="9" height="11" viewBox="0 0 12 14" aria-hidden="true">
                 <path d="M0 0l12 7-12 7z" fill="currentColor" />
               </svg>
               {t('hero.lastSet')}
-            </Link>
+            </a>
           </div>
 
           <div className="flex items-center gap-7 flex-wrap">
