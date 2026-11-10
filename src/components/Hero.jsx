@@ -45,9 +45,9 @@ export default function Hero() {
         />
       </div>
 
-      {/* Degradado horizontal */}
+      {/* Degradado horizontal — solo desktop, donde la foto deja espacio libre a la izquierda */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none hidden md:block"
         style={{
           background:
             'linear-gradient(90deg, #050607 0%, #050607 26%, rgba(5,6,7,.85) 42%, rgba(5,6,7,.2) 70%, rgba(5,6,7,.55) 100%)',
@@ -62,12 +62,12 @@ export default function Hero() {
             'linear-gradient(0deg, #050607 0%, rgba(5,6,7,0) 35%, rgba(5,6,7,0) 80%, rgba(5,6,7,.7) 100%)',
         }}
       />
-      {/* Degradado vertical — mobile, reforzado para legibilidad del logo */}
+      {/* Degradado vertical — mobile, foto a pantalla completa: solo oscurece abajo para el contenido */}
       <div
         className="absolute inset-0 pointer-events-none md:hidden"
         style={{
           background:
-            'linear-gradient(0deg, #050607 0%, rgba(5,6,7,.15) 30%, rgba(5,6,7,0) 55%, rgba(5,6,7,.9) 100%)',
+            'linear-gradient(0deg, #050607 0%, rgba(5,6,7,0) 45%, rgba(5,6,7,.75) 100%)',
         }}
       />
 

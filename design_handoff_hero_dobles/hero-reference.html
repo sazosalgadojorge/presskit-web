@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOBLES — Hero (referencia)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050607;--fg:#fff;--accent:#00C8F0;--muted:rgba(255,255,255,.72);--pad:clamp(20px,5vw,72px);--mono:'JetBrains Mono',monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--fg);text-decoration:none;transition:color .15s,background .15s,border-color .15s}
+a:hover{color:var(--accent)}
+@keyframes drop{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+
+.hero{position:relative;min-height:100vh;overflow:hidden;background:var(--bg);display:flex;flex-direction:column}
+.hero__photo{position:absolute;top:-14%;bottom:14%;right:0;left:28%}
+.hero__photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hero__fade-x{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#050607 0%,#050607 26%,rgba(5,6,7,.85) 42%,rgba(5,6,7,.2) 70%,rgba(5,6,7,.55) 100%)}
+.hero__fade-y{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#050607 0%,rgba(5,6,7,0) 35%,rgba(5,6,7,0) 80%,rgba(5,6,7,.7) 100%)}
+
+.nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px var(--pad);flex-wrap:wrap}
+.nav__logo img{height:32px;width:auto;display:block}
+.nav__links{display:flex;gap:clamp(16px,2.4vw,36px);font-size:14px;font-weight:500;letter-spacing:.02em;flex-wrap:wrap}
+.nav__links a{color:var(--muted)}
+.nav__links a.is-active{color:var(--accent)}
+.nav__right{display:flex;align-items:center;gap:18px}
+.lang{display:flex;gap:6px;font-family:var(--mono);font-size:12px}
+.lang .on{color:#fff}.lang .sep{color:rgba(255,255,255,.3)}.lang .off{color:rgba(255,255,255,.5)}
+.btn-nav{padding:10px 18px;border:1px solid rgba(0,200,240,.6);border-radius:999px;font-size:13px;font-weight:600;color:var(--accent)}
+.btn-nav:hover{background:var(--accent);color:var(--bg)}
+
+.hero__content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:28px;padding:0 var(--pad) clamp(40px,7vh,88px)}
+.hero__logo{margin:0;line-height:0}
+.hero__logo img{width:clamp(260px,46vw,680px);height:auto;display:block}
+
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid rgba(255,255,255,.14);padding-top:24px}
+.ctas{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.btn-primary{display:flex;align-items:center;gap:40px;padding:18px 22px 18px 24px;background:#fff;color:var(--bg);font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.btn-primary:hover{background:var(--accent);color:var(--bg)}
+.btn-link{display:flex;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.35);font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.btn-link:hover{border-color:#fff}
+.bar__right{display:flex;align-items:center;gap:28px}
+.social{display:flex;gap:20px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.social a{color:var(--muted)}
+.scroll{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.5)}
+.scroll__track{position:relative;width:1px;height:36px;background:rgba(255,255,255,.15);overflow:hidden}
+.scroll__track span{position:absolute;inset:0;background:var(--accent);animation:drop 1.8s infinite}
+</style>
+</head>
+<body>
+<section class="hero" id="hero">
+  <div class="hero__photo"><img src="assets/hero-photo.webp" alt=""></div>
+  <div class="hero__fade-x"></div>
+  <div class="hero__fade-y"></div>
+
+  <header class="nav">
+    <a class="nav__logo" href="#hero"><img src="assets/dobles-logo.svg" alt="DOBLES"></a>
+    <nav class="nav__links">
+      <a class="is-active" href="#hero">Home</a>
+      <a href="#bio">Bio</a>
+      <a href="#shows">Shows</a>
+      <a href="#music">Music</a>
+      <a href="#videos">Videos</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#rider">Rider</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang"><span class="on">ES</span><span class="sep">/</span><span class="off">EN</span></div>
+      <a class="btn-nav" href="#booking">Booking</a>
+    </div>
+  </header>
+
+  <div class="hero__content">
+    <h1 class="hero__logo"><img src="assets/dobles-logo.svg" alt="DOBLES"></h1>
+    <div class="bar">
+      <div class="ctas">
+        <a class="btn-primary" href="#booking">Booking
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M5 3h8v8" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
+        <a class="btn-link" href="#music">
+          <svg width="9" height="11" viewBox="0 0 12 14"><path d="M0 0l12 7-12 7z" fill="currentColor"/></svg>
+          Último set
+        </a>
+      </div>
+      <div class="bar__right">
+        <div class="social">
+          <a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a>
+        </div>
+        <a class="scroll" href="#bio">SCROLL <span class="scroll__track"><span></span></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
